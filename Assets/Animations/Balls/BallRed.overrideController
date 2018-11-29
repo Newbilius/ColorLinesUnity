@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: BallRed
+  m_Controller: {fileID: 9100000, guid: 2e525b7e8caf22d4ba074a72d46dd73e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: c1aeb7d763501f147b9d444aa07ff71d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9ea21fb96d2880e4e968e4ac2a0269ca, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: dfdf9c010102d80409d634478387d0e0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5f99e15eaef597d45a6f35125e21823f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a56ef92f0d2a50340919113c31e8efe9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bc41f2402e753e64389f3e493e597fed, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: cf726cc393a56144aa36d7d859b356f3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 345658c75a306e4459931a9090221b16, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0716d50865db61e4d8e2c01f7f799b3a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4170fc12db750924db79fd57f61fcc72, type: 2}

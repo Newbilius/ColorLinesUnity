@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: BallPurple
+  m_Controller: {fileID: 9100000, guid: 2e525b7e8caf22d4ba074a72d46dd73e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: c1aeb7d763501f147b9d444aa07ff71d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 72db51dd09160644bb330e54c9c08550, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: dfdf9c010102d80409d634478387d0e0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d9345d39b8fe9d141a65411da019fd93, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a56ef92f0d2a50340919113c31e8efe9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7d687baab13a47244a72645727ab60a7, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: cf726cc393a56144aa36d7d859b356f3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e2b25598bd4d09f47a49a2e6b4308419, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0716d50865db61e4d8e2c01f7f799b3a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8c6bc4774bc248a4e9e7bb052f301249, type: 2}

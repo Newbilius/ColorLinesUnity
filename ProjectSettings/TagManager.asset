@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - GameField
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Balls
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Steps
+    uniqueID: 654308933
+    locked: 0
+  - name: Balls
+    uniqueID: 3205207129
+    locked: 0
+  - name: UI
+    uniqueID: 2933982635
+    locked: 0
+  - name: UI2
+    uniqueID: 3280229511
+    locked: 0
+  - name: UI3
+    uniqueID: 1890438799
+    locked: 0

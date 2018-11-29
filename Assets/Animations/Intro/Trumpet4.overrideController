@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Trumpet4
+  m_Controller: {fileID: 9100000, guid: 3337bc8dd9820764c80dc0f31305169e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 0e218e1fa73b4a44583c893705017be0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 96c3f4d07d06d16499c2be3662d148e2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b5d8fb4bbf030924fb1ae2f3a1c9c9a6, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 280643b9a1d236c4cb67741f5f2f968b, type: 2}

@@ -1,0 +1,4 @@
+﻿1) качаем Resource Hacker (http://www.angusj.com/resourcehacker/)
+2) открываем в нём UnityPlayer.dll
+3) накатываем изменение в dialog 9, можно скопировать из файла
+Суть в том, что мы отключаем SysTabControl32 через замену WS_VISIBLE на WS_DISABLED
