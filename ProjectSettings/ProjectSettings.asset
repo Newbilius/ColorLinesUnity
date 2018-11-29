@@ -118,8 +118,11 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.9
+  bundleVersion: 0.91
   preloadedAssets:
+  - {fileID: 8300000, guid: 08d489ad9063b2d44b60b3440aec77de, type: 3}
+  - {fileID: 8300000, guid: 59d5901a357c1b049b030cd776b46874, type: 3}
+  - {fileID: 8300000, guid: 584b0e0c4323a544897ebe301d062948, type: 3}
   - {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -157,7 +160,7 @@ PlayerSettings:
     Standalone: com.newbilius.lines
   buildNumber:
     Standalone: 1
-  AndroidBundleVersionCode: 1
+  AndroidBundleVersionCode: 2
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
