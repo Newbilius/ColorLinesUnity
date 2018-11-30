@@ -118,7 +118,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.91
+  bundleVersion: 0.92
   preloadedAssets:
   - {fileID: 8300000, guid: 08d489ad9063b2d44b60b3440aec77de, type: 3}
   - {fileID: 8300000, guid: 59d5901a357c1b049b030cd776b46874, type: 3}
@@ -160,7 +160,7 @@ PlayerSettings:
     Standalone: com.newbilius.lines
   buildNumber:
     Standalone: 1
-  AndroidBundleVersionCode: 2
+  AndroidBundleVersionCode: 3
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
