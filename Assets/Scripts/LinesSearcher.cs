@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
-//ищет в массиве горизонтальные и вертикальные линии, заполненные шариками одного цвета
-//todo есть копипаста, но я пока не придумал, как сделать эффективнее 
+//поиск в массиве горизонтальные, вертикальные и диагональные линии, заполненные шариками одного цвета
+//todo избавиться от копипасты
 public class LinesSearcher
 {
     private const int minimumLineLength = 5;
@@ -24,7 +26,81 @@ public class LinesSearcher
         var pointsForDelete = new List<Point>();
         var scoreX = SearchByX(field, pointsForDelete);
         var scoreY = SearchByY(field, pointsForDelete);
-        return new Result(pointsForDelete, scoreX + scoreY);
+        var scoreDiagonal = SearchByDiagonals(field, pointsForDelete);
+        return new Result(pointsForDelete, scoreX + scoreY + scoreDiagonal);
+    }
+
+    private static int SearchByDiagonals(BallBehavior[,] field, List<Point> pointForDelete)
+    {
+        var score = 0;
+        for (int x = 0; x < fieldSize; x++)
+            for (int y = 0; y < fieldSize; y++)
+            {
+                score += SearchByDiagonal(pointForDelete, field, x, y, +1, +1);
+                score += SearchByDiagonal(pointForDelete, field, x, y, -1, -1);
+                score += SearchByDiagonal(pointForDelete, field, x, y, +1, -1);
+                score += SearchByDiagonal(pointForDelete, field, x, y, -1, +1);
+            }
+        return score;
+    }
+
+    private static int SearchByDiagonal(List<Point> pointForDelete, BallBehavior[,] field, int x, int y, int vectorX, int vectorY)
+    {
+        var someColorLineLength = 1;
+        var lastColorValue = GetColorValue(field, x, y);
+        var score = 0;
+        x += vectorX;
+        y += vectorY;
+
+        while (x < fieldSize
+            && y < fieldSize
+            && x >= 0
+            && y >= 0)
+        {
+            var currentColorValue = GetColorValue(field, x, y);
+            if (currentColorValue == lastColorValue)
+                someColorLineLength++;
+            else
+            {
+                score += SetDeletedByDiagonal(pointForDelete, x, y, someColorLineLength, lastColorValue, vectorX, vectorY);
+                someColorLineLength = 1;
+            }
+            lastColorValue = currentColorValue;
+            x += vectorX;
+            y += vectorY;
+        }
+
+        score += SetDeletedByDiagonal(pointForDelete, x, y, someColorLineLength, lastColorValue, vectorX, vectorY);
+        return score;
+    }
+
+    private static int SetDeletedByDiagonal(List<Point> pointForDelete,
+        int x,
+        int y,
+        int someColorLineLength,
+        int lastColorValue,
+        int vectorX,
+        int vectorY)
+    {
+        if (lastColorValue != 0 && someColorLineLength >= minimumLineLength)
+        {
+            var realLength = someColorLineLength;
+            for (var counter = 0; counter < someColorLineLength; counter++)
+            {
+                x -= vectorX;
+                y -= vectorY;
+                if (pointForDelete.Any(item => item.X == x && item.Y == y))
+                    realLength--;
+                else
+                {
+                    pointForDelete.Add(new Point(x, y));
+                }
+            }
+            if (realLength > 0)
+                return GetScore(realLength);
+            return 0;
+        }
+        return 0;
     }
 
     private static int SearchByX(BallBehavior[,] field, List<Point> pointForDelete)
@@ -63,7 +139,9 @@ public class LinesSearcher
         if (lastColorValue != 0 && someColorLineLength >= minimumLineLength)
         {
             for (int x2 = x - someColorLineLength; x2 < x; x2++)
+            {
                 pointForDelete.Add(new Point(x2, y));
+            }
             return GetScore(someColorLineLength);
         }
         return 0;
@@ -104,7 +182,9 @@ public class LinesSearcher
         if (lastColorValue != 0 && someColorLineLength >= minimumLineLength)
         {
             for (int y2 = y - someColorLineLength; y2 < y; y2++)
+            {
                 pointForDelete.Add(new Point(x, y2));
+            }
             return GetScore(someColorLineLength);
         }
         return 0;
