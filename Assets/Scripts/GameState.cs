@@ -3,5 +3,6 @@
     Animation,
     Gameplay,
     GameOver,
-    InfoMenu
+    InfoMenu,
+    RestartAnimation
 }

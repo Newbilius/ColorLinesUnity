@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-//неплохо вытащить работу с анимациями в другой класс (GameBoardManager?)
+//неплохо бы вытащить работу с анимациями в другой класс (GameBoardManager?), да и обработку нажатий на UI-кнопки тоже
 public class GameManager : MonoBehaviour
 {
     //todo нехорошо так делать (сейчас вытащил исключительно для InfoScreen)
@@ -161,13 +161,16 @@ public class GameManager : MonoBehaviour
 
     void RestartGame()
     {
+        if (GameState == GameState.RestartAnimation)
+            return;
+        GameState = GameState.RestartAnimation;
+
         var highScore = ScoreManager.GetHighScore();
         EnemyScore = highScore.Value;
         enemyScoreText.text = highScore.Value.ToString();
         enemyName.text = highScore.Name;
 
         GameCompletingManager.Instance.Deactivate();
-        GameState = GameState.Animation;
         Score = 0;
         for (int x = 0; x < 9; x++)
             for (int y = 0; y < 9; y++)
