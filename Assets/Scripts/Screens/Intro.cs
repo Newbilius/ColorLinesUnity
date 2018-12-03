@@ -45,5 +45,9 @@ public class Intro : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Escape))
             Application.Quit();
 #endif
+#if UNITY_IOS        
+        if (Input.GetMouseButtonUp(0)) 
+            audioSource.Stop();
+#endif
     }
 }
