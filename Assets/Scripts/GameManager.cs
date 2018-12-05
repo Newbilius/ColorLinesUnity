@@ -385,11 +385,8 @@ public class GameManager : MonoBehaviour
             && Score > EnemyScore
              && oldScore <= EnemyScore)
         {
-            GameState = GameState.Animation;
-            AudioManager.Instance.PlayWinMusicIfCan(() =>
-            {
-                GameState = GameState.Gameplay;
-            });
+            GameState = GameState.Gameplay;
+            AudioManager.Instance.PlayWinMusicIfCan(() => { });
         }
     }
 
