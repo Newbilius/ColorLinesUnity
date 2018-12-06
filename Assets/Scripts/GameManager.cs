@@ -154,6 +154,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Helpers.ForceLandscapeOrientation();
+
         for (int i = 0; i < 3; i++)
             PredictionBalls[i].SetActive(false);
         RestartGame();

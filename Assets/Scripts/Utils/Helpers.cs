@@ -14,6 +14,15 @@ public static class Helpers
         return value == 1 ? true : false;
     }
 
+    public static void ForceLandscapeOrientation()
+    {
+        Screen.autorotateToLandscapeLeft = true;
+        Screen.autorotateToLandscapeRight = true;
+        Screen.autorotateToPortrait = false;
+        Screen.autorotateToPortraitUpsideDown = false;
+        Screen.orientation = ScreenOrientation.AutoRotation;
+    }
+
     public static int BoolToInt(this bool value)
     {
         return value ? 1 : 0;
