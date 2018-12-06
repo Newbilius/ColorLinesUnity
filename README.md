@@ -11,7 +11,7 @@
 
 * [Скачать](https://github.com/Newbilius/ColorLinesUnity/releases) Windows-версию в релизах
 * [Установить](https://play.google.com/store/apps/details?id=com.newbilius.lines) Android-версию из Google Play. Хотя если у вас нет возможности что-то установить из Google Play - [в релизах](https://github.com/Newbilius/ColorLinesUnity/releases) есть и готовый APK файл
-* [Потыкать](http://www.old-hard.ru/color_lines_unity/) веб-версию на HTML5. В этой версии не работают звуки, хотя музыка играет нормально. Почему? Не разбирался :-/
+* [Потыкать](http://www.old-hard.ru/color_lines_unity/) веб-версию на HTML5. В этой версии не воспроизводится часть звуков, хотя музыка играет нормально. Почему? Не разбирался :-/
 
 # Оригинал на сайте Old-Games
 https://www.old-games.ru/game/136.html
