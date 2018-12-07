@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using UnityEngine;
 
 public static class Config
 {
@@ -7,6 +8,7 @@ public static class Config
     private const string SoundSystemValueKey = "SoundSystem";
     private const string NextColorsValueKey = "NextColors";
     private const string ScoreValueKey = "Scores";
+    private const string LastPlayerNameValueKey = "LastPlayerName";
 
     private static int maximumSoundSystemValue = Enum.GetValues(typeof(SoundSystemConfig)).Cast<int>().Max();
 
@@ -23,6 +25,16 @@ public static class Config
     public static SoundSystemConfig GetSoundSystemMode()
     {
         return PlayerPrefsHelper.GetEnum(SoundSystemValueKey, SoundSystemConfig.MusicAndSound);
+    }
+
+    public static string GetLastPlayerName()
+    {
+        return PlayerPrefs.GetString(LastPlayerNameValueKey, "");
+    }
+
+    public static void SetLastPlayerName(string newUserName)
+    {
+        PlayerPrefs.SetString(LastPlayerNameValueKey, newUserName);
     }
 
     public static void SwitchSoundSystemMode()

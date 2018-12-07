@@ -154,6 +154,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Helpers.ForceLandscapeOrientation();
+
         for (int i = 0; i < 3; i++)
             PredictionBalls[i].SetActive(false);
         RestartGame();
@@ -219,6 +221,7 @@ public class GameManager : MonoBehaviour
             GameBoardManager.Instance.field[x, y] = CreateBall(x, y, nextBalls);
             return;
         }
+        //todo очень плохая штука - приводит к тому, что на поздних этапах шарики всё чаще попадают в левую половину экрана
         for (x = 0; x < 9; x++)
             for (y = 0; y < 9; y++)
             {
@@ -269,7 +272,9 @@ public class GameManager : MonoBehaviour
             if (currentBall != null)
                 currentBall.StartJumping();
 
-            if (currentBall != null && oldBall != null)
+            if (currentBall != null 
+                && oldBall != null
+                && oldBall != currentBall)
                 oldBall.StopJumping();
 
             if (currentBall == null && oldBall != null)

@@ -19,6 +19,7 @@ public class Intro : MonoBehaviour
 
     void Start()
     {
+        Helpers.ForceLandscapeOrientation();
         var soundSystemMode = Config.GetSoundSystemMode();
         if (soundSystemMode == SoundSystemConfig.Music ||
             soundSystemMode == SoundSystemConfig.MusicAndSound)
