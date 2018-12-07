@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 //поиск в массиве горизонтальные, вертикальные и диагональные линии, заполненные шариками одного цвета
 //todo избавиться от копипасты
@@ -24,10 +23,14 @@ public class LinesSearcher
     public static Result SearchBy(BallBehavior[,] field)
     {
         var pointsForDelete = new List<Point>();
+
         var scoreX = SearchByX(field, pointsForDelete);
         var scoreY = SearchByY(field, pointsForDelete);
         var scoreDiagonal = SearchByDiagonals(field, pointsForDelete);
-        return new Result(pointsForDelete, scoreX + scoreY + scoreDiagonal);
+
+        var fullScore = GetScore(scoreX + scoreY + scoreDiagonal);
+
+        return new Result(pointsForDelete, fullScore);
     }
 
     private static int SearchByDiagonals(BallBehavior[,] field, List<Point> pointForDelete)
@@ -97,7 +100,7 @@ public class LinesSearcher
                 }
             }
             if (realLength > 0)
-                return GetScore(realLength);
+                return realLength;
             return 0;
         }
         return 0;
@@ -142,7 +145,7 @@ public class LinesSearcher
             {
                 pointForDelete.Add(new Point(x2, y));
             }
-            return GetScore(someColorLineLength);
+            return someColorLineLength;
         }
         return 0;
     }
@@ -185,7 +188,7 @@ public class LinesSearcher
             {
                 pointForDelete.Add(new Point(x, y2));
             }
-            return GetScore(someColorLineLength);
+            return someColorLineLength;
         }
         return 0;
     }
@@ -197,6 +200,8 @@ public class LinesSearcher
 
     private static int GetScore(int length)
     {
-        return 2 * length;
+        if (length < minimumLineLength)
+            return 0;
+        return 2 * length * length - 20 * length + 60;
     }
 }
