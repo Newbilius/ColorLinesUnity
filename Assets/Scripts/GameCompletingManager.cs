@@ -25,6 +25,7 @@ public class GameCompletingManager : MonoBehaviour
 
     public void Activate(int score, Action onComplete)
     {
+        userNameInputField.text = Config.GetLastPlayerName();
         OnComplete = onComplete;
         Score = score;
         gameCompleteBlock.SetActive(true);
@@ -78,6 +79,7 @@ public class GameCompletingManager : MonoBehaviour
         scoreResults.Data.RemoveAt(scoreResults.Data.Count - 1);
         Config.SaveScores(scoreResults);
 
+        Config.SetLastPlayerName(newUserName);
         userNameInputField.text = "";
         if (OnComplete != null)
             OnComplete();
