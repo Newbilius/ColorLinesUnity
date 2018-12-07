@@ -203,7 +203,7 @@ public class GameManager : MonoBehaviour
         UpdateNextBalls();
     }
 
-    private void CreateBallInRandomPlace(int nextBalls = -1)
+    private void CreateBallInRandomPlace(int nextBall = -1)
     {
         var x = Random.Range(0, 8);
         var y = Random.Range(0, 8);
@@ -218,19 +218,87 @@ public class GameManager : MonoBehaviour
         }
         if (GameBoardManager.Instance.field[x, y] == null)
         {
-            GameBoardManager.Instance.field[x, y] = CreateBall(x, y, nextBalls);
+            GameBoardManager.Instance.field[x, y] = CreateBall(x, y, nextBall);
             return;
         }
-        //todo очень плохая штука - приводит к тому, что на поздних этапах шарики всё чаще попадают в левую половину экрана
-        for (x = 0; x < 9; x++)
-            for (y = 0; y < 9; y++)
+        PutBallIntoFirstEmptyPosition(nextBall);
+    }
+
+    private void PutBallIntoFirstEmptyPosition(int nextBall = -1)
+    {
+        bool xVectorPositive = Random.Range(1, 1000) % 2 == 0;
+        bool yVectorPositive = Random.Range(1, 1000) % 2 == 0;
+
+        int x, xStart, xEnd, xVector;
+        int y, yStart, yEnd, yVector;
+        if (xVectorPositive)
+        {
+            xStart = 0;
+            xEnd = 9;
+            xVector = 1;
+        }
+        else
+        {
+            xStart = 8;
+            xEnd = -1;
+            xVector = -1;
+        }
+
+        if (yVectorPositive)
+        {
+            yStart = 0;
+            yEnd = 9;
+            yVector = 1;
+        }
+        else
+        {
+            yStart = 8;
+            yEnd = -1;
+            yVector = -1;
+        }
+
+        y = yStart;
+        x = xStart;
+
+        System.Func<bool> searchFunc1, searchFunc2;
+        System.Action insideSearchFunc2, endOfSearchFunc2;
+        bool searchOrder = Random.Range(1, 1000) % 2 == 0;
+        if (searchOrder)
+        {
+            searchFunc1 = () => x != xEnd;
+            searchFunc2 = () => y != yEnd;
+            endOfSearchFunc2 = () =>
+            {
+                x = x + xVector;
+                y = yStart;
+            };
+            insideSearchFunc2 = () => y = y + yVector;
+        }
+        else
+        {
+            searchFunc1 = () => y != yEnd;
+            searchFunc2 = () => x != xEnd;
+            endOfSearchFunc2 = () =>
+            {
+                y = y + yVector;
+                x = xStart;
+            };
+            insideSearchFunc2 = () => x = x + xVector;
+        }
+
+        while (searchFunc1())
+        {
+            while (searchFunc2())
             {
                 if (GameBoardManager.Instance.field[x, y] == null)
                 {
-                    GameBoardManager.Instance.field[x, y] = CreateBall(x, y, nextBalls);
+                    GameBoardManager.Instance.field[x, y] = CreateBall(x, y, nextBall);
                     return;
                 }
+                insideSearchFunc2();
             }
+            endOfSearchFunc2();
+        }
     }
 
     private BallBehavior CreateBall(int x, int y, int ballValue = -1)
@@ -272,7 +340,7 @@ public class GameManager : MonoBehaviour
             if (currentBall != null)
                 currentBall.StartJumping();
 
-            if (currentBall != null 
+            if (currentBall != null
                 && oldBall != null
                 && oldBall != currentBall)
                 oldBall.StopJumping();
