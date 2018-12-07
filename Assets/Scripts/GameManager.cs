@@ -271,7 +271,9 @@ public class GameManager : MonoBehaviour
             if (currentBall != null)
                 currentBall.StartJumping();
 
-            if (currentBall != null && oldBall != null)
+            if (currentBall != null 
+                && oldBall != null
+                && oldBall != currentBall)
                 oldBall.StopJumping();
 
             if (currentBall == null && oldBall != null)
